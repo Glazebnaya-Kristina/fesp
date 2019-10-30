@@ -1,0 +1,52 @@
+//- Все примеси в этом файле должны начинаться c имени блока ( page-footer )
+
+mixin page-footer( mods )
+
+  //- Принимает:
+      mods {string} - список модификаторов
+
+  //- Вызов:
+      +page-footer()
+        p Это подвал, детка
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if( typeof( mods ) !== 'undefined' && mods ) {
+      var modsList = mods.split(',');
+      for ( var i = 0; i < modsList.length; i++ ) {
+        allMods = allMods + ' page-footer--' + modsList[i].trim();
+      }
+    }
+
+  footer.page-footer( class=allMods )&attributes( attributes )
+    block
+
+
+
+//- Создаем обертку
+mixin page-footer-wrapper( tagName, desc )
+
+  //- Принимает:
+      tagName {string} - имя тега
+      desc {string} - имя класса
+
+  //- Вызов:
+      +page-footer-wrapper( "p", "contacts" )
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if( typeof( mods ) !== 'undefined' && mods ) {
+      var modsList = mods.split( ',' );
+      for ( var i = 0; i < modsList.length; i++ ) {
+        allMods = allMods + ' page-footer__' + desc + '--' + modsList[i].trim();
+      }
+    }
+
+  if( typeof ( tagName ) !== 'undefined' && tagName !== '' )
+    #{tagName}.page-footer__#{desc}( class=allMods )&attributes( attributes )
+      block
+  else
+    div.page-footer__#{desc}( class=allMods )&attributes( attributes )
+      block

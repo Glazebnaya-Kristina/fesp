@@ -1,0 +1,50 @@
+//- Главная страница
+
+extends ../../layouts/layout.pug
+
+include ../../blocks/page-header/page-header.pug
+include ../../blocks/page-main/page-main.pug
+include ../../blocks/page-footer/page-footer.pug
+include ../../blocks/logo/logo.pug
+
+block meta
+
+  - var mainTitle = "Заголовок сайта";
+  - var mainDescription = "Описание сайта";
+  - var siteName = "название сайта";
+
+  title #{mainTitle}
+  meta( name="description", content="#{mainDescription}" )
+
+  //- Разметка Open Graph
+  meta( property="og:title" content="#{mainTitle}")
+  meta( property="og:description" content="#{mainDescription}" )
+  meta( property="og:type" content="website" )
+  meta( property="og:url" content="" )
+  meta( property="og:locale" content="#{lang}_#{lang.toUpperCase()}" )
+  meta( property="og:image" content="/images/poster.png" )
+  meta( property="og:image:type" content="image/png" )
+  meta( property="og:image:width" content="512" )
+  meta( property="og:image:height" content="512" )
+  meta( property="og:site_name" content="#{siteName}" )
+
+  //- Разметка Twitter Card
+  meta( name="twitter:card" content="summary" )
+  meta( name="twitter:title" content="#{mainTitle}" )
+  meta( name="twitter:description" content="#{mainDescription}" )
+  meta( name="twitter:image" content="" )
+  meta( name="twitter:site" content="#{siteName}" )
+
+block prepend head
+
+block append head
+
+block header
+
+block main
+
+block footer
+
+block prepend head
+
+block append head

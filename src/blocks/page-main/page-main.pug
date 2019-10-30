@@ -1,0 +1,41 @@
+//- Все примеси в этом файле должны начинаться c имени блока ( page-main )
+
+mixin page-main( mods )
+
+  //- Принимает:
+      mods {string} - список модификаторов
+
+  //- Вызов:
+        +page-main()
+          section
+  -
+    // список модификаторов
+    var allMods = '';
+    if( typeof( mods ) !== 'undefined' && mods ) {
+      var modsList = mods.split( ',' );
+      for ( var i = 0; i < modsList.length; i++ ) {
+        allMods = allMods + ' page-header--' + modsList[i].trim();
+      }
+    }
+
+  main.page-main( class=allMods )&attributes( attributes )
+    block
+
+
+
+//- Создаем обертку
+mixin page-main-wrapper( tagName, desc )
+
+  //- Принимает:
+      tagName {string} - имя тега
+      desc {string} - имя класса
+
+  //- Вызов:
+      +page-main-wrapper( "section", "sections" )
+
+  if( typeof ( tagName ) !== 'undefined' && tagName !== '' )
+    #{tagName}.page-main__#{desc}&attributes( attributes )
+      block
+  else
+    div.page-main__#{desc}&attributes( attributes )
+      block

@@ -1,0 +1,87 @@
+// В этом файле должны быть стили для БЭМ-блока button, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+@import "../../libraries/variables";
+@import "../../libraries/mixins";
+
+.button {
+  $block-name:                &; // #{$block-name}__element
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 254px;
+  width: 100%;
+  min-height: 48px;
+  margin: 0;
+  font-family: inherit;
+  font-size: $font-size;
+  font-weight: 600;
+  color: inherit;
+  line-height: $line-height;
+  text-decoration: none;
+  text-transform: none;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  user-select: none;
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+  border-radius: $field-border-radius;
+  cursor: pointer;
+  transition-property: background-color, color, box-shadow;
+  transition-duration: $transition-time;
+  box-shadow: $box-shadow;
+
+  // &:visited {
+  //   color: $text-color;
+  // }
+
+  //&:active,
+  //&:focus {
+  //  @include field-focus;
+  //}
+
+
+  //&--pink {
+  //  background-color: $color-pink;
+  //  color: $text-color-revers;
+  //
+  //  &:active {
+  //    background-color: $gray-darker;
+  //  }
+  //
+  //  &:hover {
+  //    @media (min-width: $screen-xl) {
+  //      background-color: $gray-darker;
+  //    }
+  //  }
+  //}
+  //
+  //
+  //&--grey {
+  //  background-color: $gray-darker;
+  //  color: $white;
+  //
+  //  &:active {
+  //    background-color: $color-pink;
+  //  }
+  //
+  //  &:hover {
+  //    @media (min-width: $screen-xl) {
+  //      background-color: $color-pink;
+  //    }
+  //  }
+  //}
+
+  &--disabled,
+  &:disabled
+  {
+    opacity: $opacity;
+    cursor: not-allowed;
+    @at-root a.btn--disabled
+    {
+      pointer-events: none;
+    }
+  }
+}

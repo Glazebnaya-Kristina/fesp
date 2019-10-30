@@ -1,0 +1,62 @@
+//- Все примеси в этом файле должны начинаться c имени блока ( page-header )
+
+mixin page-header(mods)
+
+  //- Принимает:
+  //-   mods  {string} - список модификаторов
+  //- Вызов:
+        +page-header()
+          p «Шапка»
+  -
+    // список модификаторов
+    var allMods = '';
+    if( typeof( mods ) !== 'undefined' && mods ) {
+      var modsList = mods.split( ',' );
+      for ( var i = 0; i < modsList.length; i++ ) {
+        allMods = allMods + ' page-header--' + modsList[i].trim();
+      }
+    }
+
+  header.page-header(class=allMods)&attributes(attributes)
+    block
+
+
+
+//- Создаем обертку
+mixin page-header-wrapper( tagName )
+
+  //- Принимает:
+    //-   tagName {string} - имя тега
+  //- Вызов:
+    //-   +page-header-wrapper( "TagName" )
+
+  if( typeof ( tagName ) !== 'undefined' && tagName !== '' )
+    #{tagName}&attributes( attributes )
+      block
+  else
+    div&attributes( attributes )
+      block
+
+
+//- Создаем заголовок
+mixin page-header-title( title )
+
+  //- Принимает:
+    //-   title {string} - имя h2
+  //- Вызов:
+    //-   +page-header-title( 'Заголовок' )
+
+  h1.page-header__title&attributes( attributes )= title
+
+
+
+//- Создаем описание
+mixin page-header-description( description )
+
+  //- Принимает:
+    //-   text {string} - текст описания
+  //- Вызов:
+    //-  +page-header-description( "Текст описания" )
+
+  p.page-header__description&attributes( attributes )= description
+
